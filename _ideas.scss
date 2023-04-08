@@ -1,0 +1,556 @@
+.page-ideas {
+
+	&.loading .page { @include transform(translateY(-100vh)); }
+	.loader{
+
+		@include transform(translateY(100vh));
+		@media (min-width: $small) {
+			@include transform(translateY(calc(100vh - 40px)));
+		}
+		.color{background:$colorIdeas!important;}
+	}
+	.menuColor {background:$colorIdeas;}
+	.page-color { background:$colorIdeas; top:50vh; bottom:0px;}
+	.link:before { opacity:0.9; background:$colorIdeas;}
+	.dot{ color:$colorIdeas;}
+
+	h2 {
+
+		text-transform:none;
+		line-height: 1;
+
+		.waves {
+			svg {
+
+				width:50px;
+				height:10px;
+				margin: 0 auto 20px;
+
+				@media (min-width: $vlarge) {
+					width:70px;
+					height:15px;
+					margin: 0 auto 30px;
+				}
+
+				> * {
+					fill:none;
+					stroke:$fontColor;
+					stroke-width:5px;
+				}
+
+			}
+		}
+
+		i {
+			font-family:$Baskerville;
+			font-weight:300;
+		}
+
+		div {
+			overflow:hidden;
+			span {
+				display:inline-block;
+			}
+		}
+
+	}
+
+	section.intro {
+
+		position:relative;
+
+		h1 {
+			@media (min-width: $mobile) and (max-width: $medium - 1px) {
+				top:64vh;
+			}
+			@media (min-width: $medium) {
+				margin-top:-60px;
+			}
+			.dot {
+				color:$fontColor;
+			}
+		}
+
+		.padding {
+
+			height:auto;
+
+			@media (min-width: $mobile) and (max-width: $medium - 1px) {
+				padding-top:64vh;
+			}
+
+			@media (min-width: $medium) {
+				padding-right:calc(45% + 60px);
+				padding-bottom:100px;
+			}
+
+			p {
+				color:white;
+				&.intro {
+
+					@media (min-width: $small) {
+						font-size:2.6rem;
+					}
+
+					@media (min-width: $medium) {
+						margin-top:130px;
+						margin-bottom:60px;
+
+					}
+
+					@media (min-width: $vlarge) {
+						font-size:3.6rem;
+					}
+				}
+
+				div {
+					overflow:hidden;
+					span {
+						display:inline-block;
+					}
+				}
+
+			}
+
+			.hashtag {
+				display:inline-block;
+				margin-top:30px;
+				font-size:2rem;
+				font-family:$Baskerville;
+				font-style:italic;
+				color:white;
+			}
+
+		}
+
+		.page-visuel {
+
+			position:relative;
+			overflow:hidden;
+			z-index:10;
+			height:30vh;
+
+			@media (min-width: $medium) {
+				position:absolute;
+				bottom:0;
+				right:0;
+				height:auto;
+				top:50vh;
+				width:45%;
+				overflow:hidden;
+
+			}
+
+			&:after {
+				content:'';
+				display:block;
+				position:absolute;
+				top:0; left:0;
+				width:100%;
+				height:100%;
+				background:$colorIdeas;
+			}
+
+			.image {
+				position:absolute;
+				top:0; right:0;
+				width:100%;
+				height:100%;
+				background-image:url('../assets/pages/ideas/visuel_intro-mobile.jpg');
+				background-size:cover;
+				background-position: center center;
+				background-repeat:no-repeat;
+
+				@media (min-width: $small) {
+					background-image:url('../assets/pages/ideas/visuel_intro.jpg');
+				}
+
+				@media (min-width: $vlarge) {
+					background-image:url('../assets/pages/ideas/visuel_intro_large.jpg');
+				}
+
+			}
+
+		}
+
+		&.animated {
+
+			.page-visuel {
+				img {
+					@include transform(translateX(20%));
+				}
+			}
+		}
+
+		&.animated.visible {
+
+			.page-visuel {
+				&:after {
+					@include transform(translateX(-100%));
+					@include transition(transform $transitionDuration * 2 $ease 0ms);
+				}
+
+				.image {
+					@include transform(translateX(0%));
+					@include transition(transform $transitionDuration * 2 $ease 0ms);
+				}
+
+			}
+		}
+
+	}
+
+	section.kowin {
+
+		background:#1c1b20;
+
+		.padding {
+
+			padding-right:40px;
+			text-align:center;
+
+			@media (min-width: $mobile) {
+				padding-right:10vw;
+			}
+
+			@media (min-width: $small) {
+				padding-right:20vw;
+			}
+
+			@media (min-width: $medium) {
+				padding-right:15vw;
+			}
+
+			@media (min-width: $large) {
+
+				@include display(flex);
+				@include justify-content(space-between);
+				@include flex-wrap(nowrap);
+				text-align: left;
+			}
+
+			@media (min-width: $vlarge) {
+				padding-right:20%;
+			}
+		}
+
+		.logo {
+
+			width:150px;
+			margin-bottom:40px;
+			margin:0px auto 40px;
+
+			@media (min-width: $large) {
+				min-width:150px;
+				margin:0px;
+			}
+		}
+
+		.logo-explain {
+
+			width:100%;
+			margin: 0px auto 40px;
+
+			@media (min-width: $small) {
+				width:250px;
+			}
+
+			@media (min-width: $large) {
+				margin-bottom:0px;
+				min-width:300px;
+				margin:0 100px;
+			}
+		}
+
+		.content {
+			color:white;
+			@media (max-width: $medium - 1px) {
+				width:100%;
+			}
+			h3 {
+				font-size:2.4rem;
+				@media (min-width: $large) {
+					margin-bottom:60px;
+				}
+				i {
+					font-family:$Baskerville;
+					font-weight:300;
+				}
+			}
+			p {
+				color:white;
+			}
+		}
+
+	}
+
+	section.presentation {
+
+		.padding {
+
+			padding-right:40px;
+
+			@media (min-width: $mobile) {
+				padding-right:10vw;
+			}
+
+			@media (min-width: $small) {
+				padding-right:20vw;
+			}
+
+			@media (min-width: $medium) {
+				padding-right:15vw;
+			}
+
+			@media (min-width: $vlarge) {
+				padding-right:20%;
+			}
+		}
+
+		h2 {
+
+			margin-bottom:60px;
+			line-height:1.2;
+			@media (min-width: $medium) {
+				float:right;
+				margin-bottom:100px;
+			}
+
+			@media (min-width: $large) {
+				font-size:5rem;
+			}
+
+			i {
+				display:inline;
+			}
+
+		}
+
+		.row {
+			clear:both;
+			margin:0px;
+			@media (min-width: $medium) {
+				margin-left:-40px;
+				margin-right:-40px;
+			}
+			@media (min-width: $large) {
+				margin-left:-50px;
+				margin-right:-50px;
+			}
+			> * {
+				padding-right:0px;
+				padding-left:0px;
+				@media (min-width: $medium) {
+					padding:0 40px;
+				}
+				@media (min-width: $large) {
+					padding:0 50px;
+				}
+
+				&+* {
+					margin-top:40px;
+					@media (min-width: $medium) {
+						margin-top:0px;
+					}
+				}
+
+			}
+		}
+
+		.num {
+
+			display:block;
+			width:45px;
+			height:45px;
+			line-height:45px;
+			border:1px solid $fontColor;
+			text-align:center;
+			@include border-top-radius(40px);
+			@include border-bottom-radius(40px);
+			margin-bottom:20px;
+
+			@media (min-width: $medium) {
+				margin-bottom:30px;
+			}
+		}
+
+		h3 {
+			font-size:2.1rem;
+			margin-bottom:20px;
+
+			@media (min-width: $medium) {
+				margin-bottom:30px;
+			}
+		}
+
+		p {
+			line-height:1.6;
+			a {
+				color:$colorIdeas;
+			}
+		}
+
+	}
+
+	.visuel-full {
+		max-height:100vh;
+		overflow:hidden;
+		background:darken($pageBackground, 5%);
+	}
+
+	section.refs {
+
+		@media (min-width: $small) {
+			@include display(flex);
+			@include align-items(center);
+			height:50vh;
+		}
+
+		@media (min-width: $medium) {
+			height:80vh;
+		}
+
+		.padding{
+			text-align:center;
+			padding:10vh 40px;
+		}
+
+		.list-refs {
+
+			text-align: center;
+			padding:0px;
+			margin:0px;
+			list-style:none;
+			margin-top:60px;
+
+			li {
+				display:inline-block;
+				background:$fontColor;
+				margin:0px 8px 10px;
+				a {
+					display:block;
+					width:100px;
+
+					@media (min-width: $medium) {
+						width:145px;
+					}
+
+					@media (min-width: $vlarge) {
+						width:200px;
+					}
+				}
+			}
+		}
+
+	}
+
+	section.contact-ideas {
+
+		background:$colorIdeas;
+		position:relative;
+
+		.padding {
+			@media (min-width: $small) {
+				padding-left:42%;
+			}
+
+			@media (min-width: $medium) {
+				padding-left:30%;
+			}
+
+		}
+
+		.visuel {
+
+			display:none;
+			position:absolute;
+			top:0;
+			bottom:0;
+			left:0;
+
+			background-repeat:no-repeat;
+			background-size:cover;
+
+			@media (min-width: $small) {
+				display:block;
+				width:30%;
+				background-image:url("../assets/pages/ideas/visuel_contact.jpg");
+			}
+
+			@media (min-width: $medium) {
+				width:20%;
+			}
+
+			@media (min-width: $vlarge) {
+				background-image:url("../assets/pages/ideas/visuel_contact_large.jpg");
+			}
+
+		}
+
+		h2 {
+			color:white;
+			margin-bottom:20px;
+			@media (min-width: $large) {
+				font-size:4.4rem;
+			}
+		}
+
+		p {
+			color:white;
+			margin-bottom:40px;
+			max-width:600px;
+
+			@media (min-width: $small) {
+				margin-bottom:60px;
+			}
+
+			div {
+				overflow:hidden;
+				span {
+					display:inline-block;
+				}
+			}
+
+			&.intro {
+				font-family:$Baskerville;
+				font-weight:300;
+				@media (min-width: $large) {
+					font-size:2.4rem;
+				}
+			}
+
+			&+a {
+				margin-top:0px;
+				background:$fontColor;
+				.txt {
+					color:white;
+				}
+				.icon {
+					svg > * {
+						fill:white;
+					}
+				}
+			}
+
+		}
+
+		&.animated {
+
+			.visuel {
+				@include transform(translateX(-100%));
+			}
+		}
+
+		&.animated.visible {
+
+			.visuel {
+
+				@include transform(translateX(0%));
+				@include transition(transform $transitionDuration * 2 $ease 0ms);
+
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,154 @@
+.page-contact {
+
+	&.loading .page { @include transform(translateX(-100vw)); }
+	.loader{ @include transform(translateX(100vw));
+		.color{background:lighten($colorContact, 25%)!important;}
+	}
+	.menuColor {background:lighten($colorContact, 25%);}
+	.page-color{
+		background:lighten($colorContact, 25%);
+		right:0;
+		left:66.666%;
+	}
+	.link:before {
+		background:$colorContact;
+	}
+	.dot{color:$colorContact;}
+
+
+	section.intro {
+
+		.padding {
+			padding-top:30vh;
+		}
+
+		h1 {
+
+			margin-bottom:30px;
+			@media (min-width: $small) {
+				font-size:6rem;
+			}
+
+			@media (min-width: $large) {
+				font-size:7.5rem;
+			}
+
+			@media (min-width: $vlarge) {
+				font-size:10rem;
+			}
+
+		}
+
+		p.intro {
+
+			line-height:1.1;
+			margin-left:50%;
+
+			@media (min-width: $small) {
+				font-size:2.2rem;
+				margin-bottom:20px;
+			}
+
+			@media (min-width: $large) {
+				font-size:2.6rem;
+				margin-bottom:30px;
+			}
+
+			@media (min-width: $vlarge) {
+				font-size:3.2rem;
+			}
+
+
+		}
+
+	}
+
+	.phone, address {
+		display:block;
+		font-size:1.4rem;
+		font-family:$Montserrat;
+		font-weight:300;
+
+		@media (min-width: $vlarge) {
+			font-size:2rem;
+		}
+
+		&.phone {
+			margin-bottom:20px;
+		}
+	}
+
+	address {
+		position:relative;
+		display:inline-block;
+		&:after {
+
+			position:absolute;
+			top:100%;
+			left:0;
+			width:100%;
+			height:1px;
+			background:$fontColor;
+
+			@media (min-width: $medium) {
+				content:'';
+				display:block;
+			}
+		}
+	}
+
+	div[class^="block-"] {
+		margin-top:50px;
+		h3 {
+			font-size:1.6rem;
+			margin-bottom:10px;
+
+			@media (min-width: $vlarge) {
+				font-size:2rem;
+			}
+
+		}
+		p {
+			font-size:1rem;
+		}
+	}
+
+	.block-contact {
+		p {
+			max-width:250px;
+		}
+	}
+
+	.block-apply {
+		p {
+			max-width:400px;
+		}
+	}
+
+	.map-container {
+
+		width:33.333%;
+		position:absolute;
+		top:0;
+		right:0;
+		height:110vh;
+		z-index:1;
+		opacity:0.8;
+		@include transition(opacity 1200ms linear 800ms);
+
+		#map {
+			position:absolute;
+			top:0; left:0;
+			width:100%;
+			height:100%;
+		}
+	}
+
+	&.loading {
+		.map-container {
+			opacity:0;
+			@include transition(opacity 200ms linear 0ms);
+		}
+	}
+
+}

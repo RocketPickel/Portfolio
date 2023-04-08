@@ -1,0 +1,361 @@
+#menu {
+
+	position:fixed;
+	top:0;
+	left:0px;
+	right:80px;
+	height:100%;
+	z-index:500;
+	@include display(flex);
+	@include flex-direction(column);
+	@include justify-content(space-between);
+	@include transition(transform $transitionDuration $ease3 0ms, left $transitionDuration $ease3 0ms);
+	@include transform(translateX(-100%));
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	background:white;
+	padding:0px;
+
+	@media (min-width: $small) {
+		left:$borderSizeMedium;
+		right:20%;
+		@include flex-direction(row);
+		@include align-items(center);
+		overflow:hidden;
+	}
+
+	@media (min-width: $vlarge) {
+		left:$borderSizeLarge;
+	}
+
+	.menuHover & {
+		@media (min-width: $small) {
+			@include transform(translateX(-95%));
+		}
+	}
+
+	.menuOpen & {
+		@include transform(translateX(0%));
+		> *:not(.color) {
+			@include transform(translateX(0%));
+		}
+	}
+
+	> *:not(.color) {
+		position:relative;
+		z-index:10;
+	}
+
+	.switch-lang {
+		margin:40px 0px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 200ms, opacity 400ms linear 350ms);
+		}
+	}
+
+	.list-socials {
+		margin-bottom:40px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 200ms, opacity 400ms linear 350ms);
+		}
+	}
+
+	.menu-container {
+		margin-left:0px;
+
+		@media (max-width: $small - 1px) {
+			min-height:100%;
+			padding-left:0px;
+			@include display(flex);
+			@include flex-direction(column);
+			padding: 0 40px 40px;
+		}
+
+		@media (min-width: $small) {
+			padding:0px;
+			padding-left:calc(16vw - 40px);
+		}
+
+		@media (min-width: $large) {
+			padding-left:calc(16vw - 60px);
+		}
+
+		.menu-nav {
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+			margin-bottom: 20px;
+			margin-left: -10px;
+			margin-top: 40px;
+
+			@media (min-width: $small) {
+				margin-bottom: 60px;
+				margin-top: 0px;
+			}
+
+			@media (min-width: $vlarge) {
+				margin-bottom: 100px;
+			}
+
+			li {
+
+				.msk {
+					padding: 0px;
+					line-height: 1.1;
+					
+					span {
+						@include transition(transform 800ms $ease3 0ms);
+						@include transform(translateY(100%));
+					}
+				}
+
+				.menuOpen & {
+
+					@for $i from 1 through 10 {
+				      &:nth-child(#{$i}) .msk span {
+					      @include transition-delay(50ms * $i + 250ms);
+				      }
+				    }
+
+					.msk {
+						span {
+							position:relative;
+							@include transform(translateY(0%));
+							padding:0 10px;
+							&:before {
+								content:'';
+								display:block;
+								position:absolute;
+								top:50%;
+								left:0px;
+								right:0px;
+								height:15px;
+								background:$fontColorLight;
+								opacity:0.5;
+								z-index:-1;
+								@include transform-origin(left center);
+								@include transform(scaleX(0) translateY(-50%));
+								@include transition(transform 400ms $ease3 0ms);
+							}
+						}
+					}
+				}
+
+				&+li {
+					margin-top:6px;
+				}
+
+				a {
+					display:inline-block;
+					vertical-align:middle;
+					position:relative;
+					font-family:$Gilroy;
+					font-size:2.1rem;
+					line-height:1.1;
+					font-weight:900;
+					text-decoration:none!important;
+					color:inherit;
+
+					@media (min-width: 360px) {
+						font-size:2.4rem;
+					}
+
+
+					@media (min-width: $small) {
+						font-size:3rem;
+					}
+
+					@media (min-width: $vlarge) {
+						font-size:3.8rem;
+					}
+
+					&.active {
+						pointer-events:none;
+					}
+
+					&.page-home-link .msk span:before { background:$colorHome;}
+					&.page-projects-link .msk span:before { background:darken($colorDefault,10%);}
+					&.page-ideas-link .msk span:before { background:$colorIdeas;}
+					&.page-careers-link .msk span:before { background:$colorCareers;}
+					&.page-contacts-link .msk span:before { background:$colorContact;}
+					&.page-philo-link .msk span:before { background:$colorPhilo;}
+
+					&:hover .msk span:before, &.active .msk span:before {
+						@include transform(scaleX(1) translateY(-50%));
+					}
+				}
+			}
+		}
+
+		p {
+			max-width:240px;
+			color:#7e7e7e;
+			opacity:0;
+			@include transform(translateX(-150px));
+			@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+			.menuOpen & {
+				opacity:1;
+				@include transform(translateX(0px));
+				@include transition(transform 600ms $ease3 200ms, opacity 400ms linear 350ms);
+			}
+		}
+	}
+
+	.contact {
+		width:100%;
+		@include align-self(flex-end);
+		margin:40px 0px;
+		margin-top: auto;
+		margin-bottom: 0;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 200ms, opacity 400ms linear 350ms);
+		}
+	}
+
+	.briefLink {
+
+		position:absolute;
+		bottom:$borderSizeMedium * 2;
+		left:calc(16vw - 60px);
+		margin-bottom:0px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		@media (min-width: $vlarge) {
+			bottom:$borderSizeLarge * 2;
+		}
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 250ms, opacity 400ms linear 400ms);
+		}
+	}
+
+	.pourcent {
+		position: absolute;
+		left: 40px;
+		bottom: 200px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		@media (min-width: $small) {
+			bottom:$borderSizeLarge * 3.5;
+			left: initial;
+			right: calc(16vw - 60px);
+			margin-bottom:0px;
+		}
+
+		@media (min-width: $medium) {
+			bottom:$borderSizeLarge * 4;
+		}
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 250ms, opacity 400ms linear 400ms);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			max-width: 90px;
+		}
+	}
+
+	.newsletterLink {
+		position:absolute;
+		left: 40px;
+		bottom: 120px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 400ms linear 0ms);
+
+		@media (min-width: $small) {
+			bottom:$borderSizeMedium * 2;
+			left: initial;
+			right: calc(16vw - 60px);
+			margin-bottom:0px;
+		}
+
+		@media (min-width: $vlarge) {
+			bottom:$borderSizeLarge * 2;
+		}
+
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 600ms $ease3 250ms, opacity 400ms linear 400ms);
+		}
+	}
+	
+	.btn {
+		background: $fontColor;
+		padding: 12px 20px;
+		display: flex;
+		font-size: 1rem!important;
+		align-items: center;
+		margin-top: 10px;
+		margin-left: 10px;
+		opacity:0;
+		@include transform(translateY(50px));
+		@include transition(transform 600ms $ease3 0ms, opacity 240ms linear 240ms);
+		
+		.menuOpen & {
+			opacity:1;
+			@include transform(translateY(0px));
+			@include transition(transform 1200ms $ease3 420ms, opacity 420ms $ease3 1000ms);
+		}
+		
+		&__txt {
+			color: white;
+			font-weight: 300;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			
+			strong {
+				font-weight: 700;
+			}
+		}
+	}
+}
+
+.menuColor {
+	position:fixed;
+	top:0; left:0;
+	width:100%;
+	height:100%;
+	@include transition(opacity $transitionDuration $ease3 0ms);
+	background: $fontColor;
+	z-index:11;
+	opacity:0;
+	pointer-events:none;
+	.menuOpen & {
+		opacity:1;
+		pointer-events:all;
+		@media (min-width: $small) {
+			opacity:0.95;
+		}
+	}
+}

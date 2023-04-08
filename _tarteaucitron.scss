@@ -1,0 +1,120 @@
+$tarteaucitron-bgcolor: $fontColor;
+$white : $colorDefault;
+$allowed-color: #20b55f;
+$denied-color: #d44545;
+
+#tarteaucitronRoot {
+
+  &.tarteaucitronBeforeVisible {
+    #tarteaucitronAlertBig {
+      @media screen and (min-width: $small + 1px) {
+        display: flex!important;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  #tarteaucitronBack {
+    background: $tarteaucitron-bgcolor!important;
+    opacity: 0.9!important;
+  }
+
+  #tarteaucitronAlertBig {
+    background: $tarteaucitron-bgcolor!important;
+    padding: 20px!important;
+    box-sizing: border-box!important;
+
+    #tarteaucitronDisclaimerAlert {
+      margin-right: auto!important;
+      font-size: 1.3rem;
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+
+      @media screen and (min-width: $small + 1px) {
+        text-align: left;
+        margin-bottom: 0;
+      }
+    }
+
+    > button {
+      margin: 0!important;
+      background: transparent!important;
+      font-size: 0.9rem!important;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+      border: 1px solid $white!important;
+      margin-top: 10px!important;
+      padding: 12px 20px!important;
+      color: $white!important;
+      text-transform: uppercase;
+
+      @media screen and (min-width: $small + 1px) {
+        margin-top: 0!important;
+        margin-left: 10px!important;
+        white-space: nowrap;
+      }
+
+      &:hover {
+        background: $white!important;
+        color: $tarteaucitron-bgcolor!important;
+      }
+
+      &#tarteaucitronCloseAlert {
+        opacity: 0.3;
+        border: 1px solid $white!important;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      span {
+        display:none!important;
+      }
+    }
+  }
+
+  #tarteaucitronClosePanel {
+    background: $tarteaucitron-bgcolor!important;
+    border-color: $tarteaucitron-bgcolor!important;
+  }
+
+  #tarteaucitronServices {
+    box-shadow: none!important;
+
+    .tarteaucitronMainLine,
+    .tarteaucitronTitle button {
+      background: $tarteaucitron-bgcolor!important;
+      border-color: $tarteaucitron-bgcolor!important;
+    }
+
+    .tarteaucitronAllow, .tarteaucitronDeny {
+      margin: 0!important;
+      background: $white!important;
+      font-size: 0.9rem!important;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+      margin-left: 10px!important;
+      padding: 10px 20px!important;
+      color: $tarteaucitron-bgcolor!important;
+      text-transform: uppercase;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      span {
+        display: none!important;
+      }
+    }
+
+    ul .tarteaucitronLine.tarteaucitronIsAllowed { border-color: $allowed-color!important; }
+    ul .tarteaucitronLine.tarteaucitronIsDenied { border-color: $denied-color!important; }
+
+    #tarteaucitronInfo {
+      background: 0!important;
+    }
+  }
+}

@@ -1,0 +1,381 @@
+.btn-lined {
+	display:inline-block;
+	color:inherit!important;
+	padding:0px 25px;
+	line-height:32px;
+	border:2px solid $fontColor;
+	text-transform:uppercase;
+	font-size:0.9rem;
+	font-weight:700;
+	letter-spacing:0.2em;
+	text-decoration:none!important;
+
+	&.min {
+		border-width:1px;
+		font-size:0.7rem;
+		padding:0px 20px;
+	}
+
+}
+
+.btn-close {
+
+	position:absolute;
+	top:40px;
+	right:40px;
+	border:1px solid $fontColor;
+	width:40px;
+	height:40px;
+	overflow:hidden;
+	@include border-top-radius(60px);
+	@include border-bottom-radius(60px);
+	z-index:100;
+	@include transition(transform 600ms cubic-bezier(0, 0.000, 0.160, 1.000) 0ms, border 150ms linear 0ms);
+	@media (min-width: $vlarge) {
+		width:60px;
+		height:60px;
+	}
+
+	&.close-project {
+		@include transform(translateY(-100px));
+		@include transition-delay(0ms);
+		border-color:white;
+		position:fixed;
+		svg {
+			> * {
+				fill:white;
+				@include transition(all 150ms linear 0ms);
+			}
+		}
+
+		&.dark {
+			border-color:$fontColor;
+			svg {
+				> * {
+					fill:$fontColor;
+
+				}
+			}
+		}
+
+	}
+
+	.cross {
+
+		position:absolute;
+		top:50%;
+		left:50%;
+		@include transform(translate(-50%, -50%));
+
+		svg {
+			width:10px;
+			height:10px;
+			@media (min-width: $vlarge) {
+				width:14px;
+				height:14px;
+			}
+		}
+
+	}
+}
+
+.link {
+
+	position:relative;
+	display:inline-block;
+	font-family:$Baskerville;
+	font-size:1.6rem;
+	font-style:italic;
+	color:inherit!important;
+	text-decoration:none!important;
+	background:none;
+	border:none;
+
+	@media (min-width: $vlarge) {
+		font-size:2rem;
+	}
+
+	.txt {
+		position:relative;
+		z-index:10;
+	}
+
+	&:hover{
+		&:after{
+			@include transform(scaleX(0));
+			@include transform-origin(bottom right);
+			@include transition-duration(400ms);
+		}
+
+		&:before{
+			@include transform(scaleX(1));
+			@include transform-origin(bottom left);
+		}
+
+	}
+
+	&:after, &:before{
+		content:'';
+		position:absolute;
+		bottom:0%;
+		left:0px;
+		right:0px;
+		height:2px;
+		overflow:hidden;
+		background:$fontColor;
+		@include transform-origin(bottom left);
+		@include transition(transform 400ms $ease3 0ms);
+		z-index:0;
+	}
+
+	&:before{
+		bottom:8px;
+		top:8px;
+		height:auto;
+		opacity:0.5;
+		left:-5px;
+		right:-5px;
+		@include transform(scaleX(0));
+		@include transform-origin(bottom right);
+		@include transition-duration(400ms);
+
+		@media (min-width: $vlarge) {
+			bottom:10px;
+			top:10px;
+		}
+
+	}
+
+	&.min {
+		font-size:1.2rem;
+		&:before{
+			top:5px;
+			bottom:7px;
+		}
+		&:after{
+			height:1px;
+		}
+	}
+
+
+}
+
+.button {
+
+	display:inline-block;
+	background:white;
+	position:relative;
+	padding:16px 20px;
+	border:none;
+	outline:none;
+	overflow:hidden;
+	color:$fontColor!important;
+	text-decoration:none!important;
+	margin-top:40px;
+	font-size:1rem;
+	font-weight:700;
+
+	@media (min-width: $vlarge) {
+		padding:20px;
+		margin-top:60px;
+		font-size:1.3rem;
+	}
+
+	&.disabled {
+		background:url('../assets/disabled_bg.jpg') repeat-x #1e1f23;
+		background-size:contain;
+		padding-right:80px;
+		color:white!important;
+		cursor:not-allowed;
+		pointer-events:none!important;
+	}
+
+	.arrow-container {
+
+		display:inline-block;
+		position:relative;
+		margin-left:30px;
+
+		> * {
+			@include transition(all 500ms $ease3 0ms);
+		}
+
+		.arrow_hover {
+			top:0;
+			left:0;
+			position:absolute;
+			@include transform(translateX(-20px));
+			opacity:0;
+		}
+
+	}
+
+	&:hover {
+
+		.arrow {
+			opacity:0;
+			@include transform(translateX(60px));
+		}
+
+		.arrow_hover {
+			opacity:1;
+			@include transform(translateX(0px));
+			@include transition-delay(50ms);
+		}
+	}
+
+	.animated & {
+		position:relative;
+		overflow:hidden;
+		&:after{
+			content:'';
+			display:block;
+			position:absolute;
+			top:0; right:0;
+			width:100%;
+			height:100%;
+			background:$fontColor;
+		}
+		.txt {
+			display:inline-block;
+			opacity:0;
+			@include transform(translateX(-50px));
+
+		}
+		.arrow-container {
+			opacity:0;
+			@include transform(translateX(-50px));
+		}
+
+	}
+
+	.animated.visible & {
+		&:after{
+			@include transform(translateX(100%));
+			@include transition(transform 600ms $ease3 300ms);
+		}
+		.txt {
+			opacity:1;
+			@include transform(translateX(0px));
+			@include transition(transform 1200ms $ease 0ms, opacity 250ms linear 400ms);
+		}
+		.arrow-container {
+			opacity:1;
+			@include transform(translateX(0px));
+			@include transition(transform 1200ms $ease 0ms, opacity 250ms linear 400ms);
+		}
+	}
+
+}
+
+.briefLink, .newsletterLink {
+
+	position:relative;
+	display:inline-block;
+	color:inherit!important;
+	text-decoration:none!important;
+	white-space: nowrap;
+	background: 0;
+	padding: 0;
+	border: 0;
+	outline: none!important;
+
+	@media (min-width: $small) {
+		margin-left:40px;
+	}
+
+	@media (min-width: $large) {
+		margin-left:0px;
+	}
+
+	.block-title {
+		margin-bottom:0px;
+		display:block;
+	}
+
+	.arrow {
+
+		display:none;
+		position:absolute;
+		width:40px;
+		top:50%;
+		right:100%;
+		@include transform(translateY(-50%));
+		@include transition(all 600ms $ease3 0ms);
+		margin-right:40px;
+
+		@media (min-width: $large) {
+			margin-right:80px;
+		}
+
+		@media (min-width: $small) {
+			display:block;
+		}
+
+		.line {
+			width:100%;
+			height:2px;
+			display:block;
+			float:right;
+			@include transition(width 600ms $ease3 0ms);
+			overflow:hidden;
+			.inner {
+				background:$fontColor;
+				width:100%;
+				height:2px;
+				display:block;
+				float:right;
+				@include transition(width 600ms $ease3 0ms);
+			}
+		}
+
+		svg {
+			position:absolute;
+			top:50%;
+			right:0px;
+			@include transform(translate(2px, -50%));
+		}
+
+	}
+
+	&:hover {
+		.arrow {
+
+			@include transform(translate(20px, -50%));
+			width:60px;
+
+			@media (min-width: $large) {
+				@include transform(translate(40px, -50%));
+				width:80px;
+			}
+
+			.line .inner {
+				width:20px;
+				@include transition(width 800ms $ease3 0ms);
+				@media (min-width: $large) {
+					width:40px;
+				}
+			}
+		}
+	}
+
+	.next-page-title{
+		font-weight:900;
+		font-size:2.4rem;
+		font-family:$Gilroy;
+		text-transform:uppercase;
+		line-height:1.4;
+
+		@media (min-width: $vlarge) {
+			font-size:3rem;
+		}
+
+	}
+
+}
+
+.newsletterLink {
+	@media (max-width: $small - 1px) {
+		margin-top: 20px;
+	}
+}

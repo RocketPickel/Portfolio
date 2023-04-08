@@ -1,0 +1,189 @@
+form {
+
+	position: relative;
+
+	.form-control, textarea {
+
+		background:none!important;
+		border-radius:0px;
+		border:none;
+		border-bottom:1px solid rgba(255, 255, 255, 0.3);
+		font-size:1.6rem;
+		font-family:$Baskerville;
+		font-style:italic;
+		padding:0px;
+		height:42px;
+		color:white!important;
+		outline:none!important;
+
+		@media (min-width: $vlarge) {
+			font-size:2rem;
+			height:50px;
+		}
+
+		&:focus {
+			border-bottom-color:rgba(255, 255, 255, 1);
+			@include placeholder {
+				color:rgba(255, 255, 255, 1);
+			}
+		}
+
+		@include placeholder {
+			color:rgba(255, 255, 255, 0.3);
+		}
+
+		&.parsley-error{
+			color:$colorHome;
+			border-bottom:1px solid $colorHome;
+			@include placeholder {
+				color:$colorHome;
+			}
+		}
+
+	}
+
+	.upload-files {
+		margin-top:40px;
+		@media (min-width: $small) {
+			@include display(flex);
+			@include align-items(center);
+			margin-left:-15px;
+		}
+	}
+
+	.custom-file {
+
+		height:auto;
+		width:100%;
+		@media (min-width: $small) {
+			width:50%;
+			margin-left:15px;
+
+		}
+
+		&.filled, &:hover {
+			.custom-file-control {
+				border-color:#adc798;
+				.file-name {
+					color:#adc798;
+				}
+				.icon-container {
+					.icon {
+						svg {
+							> * {
+								fill:#adc798;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.filled {
+			pointer-events:none;
+			.custom-file-control {
+				.icon-container {
+					.icon.arrow {
+						opacity:0;
+						@include transform(translate(-50%, -100%));
+					}
+					.icon.cross {
+						opacity:1;
+						@include transform(translate(-50%, -50%));
+					}
+				}
+			}
+		}
+
+		.custom-file-input {
+			position:absolute;
+			top:0; left:0;
+			width:100%;
+			height:100%;
+		}
+
+		.custom-file-control {
+			display:block;
+			position:relative;
+			height:55px;
+			line-height:55px;
+			width:100%;
+			border:1px solid white;
+			background:none;
+			padding:0 50px 0px 20px;
+			border-radius:0px;
+			overflow:hidden;
+			@include transition(border 150ms linear 0ms);
+
+			&:after, &:before{
+				display:none;
+			}
+
+			.file-name {
+				color:white;
+				font-weight:700;
+				@include transition(color 150ms linear 0ms);
+			}
+
+			.icon-container {
+				position:absolute;
+				top:50%;
+				right:25px;
+				> * {
+					position:absolute;
+					top:50%; left:50%;
+					@include transform(translate(-50%, -50%));
+					@include transition(transform 250ms $ease 0ms, opacity 150ms linear 0ms);
+					&.cross {
+						pointer-events:all!important;
+						opacity:0;
+						@include transform(translate(-50%, 0%));
+					}
+				}
+			}
+		}
+	}
+
+	textarea {
+		display:inline-block;
+		width:100%;
+		min-height:30px;
+		height:auto;
+		margin-top:10px;
+		padding-bottom:10px;
+
+		@media (min-width: $vlarge) {
+			min-height:40px;
+		}
+
+	}
+
+	.form-actions {
+		text-align:right;
+		margin-top:40px;
+		@media (min-width: $small) {
+			margin-top:60px;
+		}
+		@media (min-width: $vlarge) {
+			margin-top:80px;
+		}
+
+		button[type="submit"] {
+
+			@extend .button;
+
+		}
+
+	}
+
+	.parsley-errors-list {
+		list-style-type:none;
+		color:$colorHome;
+		padding:0;
+		margin:0;
+		li {
+			padding-top:3px;
+		}
+	}
+
+}

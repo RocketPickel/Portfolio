@@ -1,0 +1,35 @@
+.popup {
+	
+	position:fixed;
+	top:0; 
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:10;
+	@include transform(translateY(100vh));
+	@include transition(transform $transitionDuration $ease 0ms, visibility $transitionDuration linear 0ms);
+	background:white;
+	display:none;
+	visibility:hidden;
+	
+	.page-careers & {
+		display:block;
+	}
+	
+	@media (min-width: $small) {
+		z-index:100;
+	}
+	
+	.openPopup & {
+		visibility:visible;
+		@include transform(translateX(0%));
+	}
+	
+	.ajax-content {
+		position:relative;
+		height:100%;
+		overflow:auto;
+		-webkit-overflow-scrolling:touch;
+	}
+	
+}

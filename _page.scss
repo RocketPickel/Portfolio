@@ -1,0 +1,39 @@
+.page-simple {
+	.intro {
+		.padding {
+			height: auto!important;
+			padding: 40vh 20vw 0!important;
+
+			@media (max-width: $small) {
+				padding: 260px 10vw 0px!important;
+			}
+
+			h1 {
+				position: relative;
+				transform: none;
+				top: 0;
+				left: 0;
+				max-width: 80%;
+				line-height: 1;
+				margin-bottom: 0!important;
+				font-size: 5vw;
+				padding-bottom: 0!important;
+
+				@media (max-width: $small) {
+					max-width: 100%;
+					font-size: 3.4rem;
+				}
+			}
+		}
+	}
+
+	.page__content {
+		.padding {
+			padding: 60px 10vw 100px;
+
+			@media (min-width: $small) {
+				padding: 120px 20vw 20vh 20vw;
+			}
+		}
+	}
+}

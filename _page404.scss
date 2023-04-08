@@ -1,0 +1,56 @@
+.page-404 {
+
+	&.loading .page { @include transform(translateX(-100vw)); }
+	.loader{ @include transform(translateX(100vw));
+		.color{background:lighten($colorProjects, 10%)!important;}
+	}
+	.menuColor {background:lighten($colorProjects, 10%);}
+	.page-color{
+		background:lighten($colorProjects, 10%);
+		right:0;
+		left:50%;
+	}
+
+	.dot {color:$colorProjects;}
+	.link:before {
+		background:$colorProjects;
+	}
+
+	h1 {
+
+		margin-bottom:40px;
+		@media (min-width: $medium) {
+			font-size:6rem;
+		}
+
+		@media (min-width: $large) {
+			font-size:8rem;
+		}
+		@media (min-width: $vlarge) {
+			font-size:10rem;
+		}
+
+
+		.num {
+			color:$colorProjects;
+		}
+	}
+
+	.padding {
+
+		padding-top:38vh;
+		padding-right:20%;
+		@media (min-width: $vlarge) {
+			padding-right:22%;
+		}
+
+		.page-content{
+			@media (min-width: $medium) {
+				margin-left:50%;
+				padding-left:120px;
+			}
+			p:not(.intro) {margin-bottom:0px;}
+		}
+	}
+
+}

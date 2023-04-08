@@ -1,0 +1,317 @@
+.page-careers {
+
+	&.loading .page { @include transform(translateY(-100vh)); }
+	.loader{
+
+		@include transform(translateY(100vh));
+		@media (min-width: $small) {
+			@include transform(translateY(calc(100vh - 40px)));
+		}
+		.color{background:$colorCareers!important;}
+	}
+	.menuColor {background:$colorCareers;}
+	.page-color { background:$colorCareers; top:50vh; bottom:0px;}
+	.link:before { opacity:0.9; background:$colorCareers;}
+
+	&.loadPopup .app {
+		@include transform(translateY(-25%));
+	}
+
+	h2 {
+		font-size:3.2rem;
+		text-transform:none;
+		line-height:1.1;
+		margin-bottom:40px;
+
+		@media (min-width: $medium) {
+			margin-bottom:0px;
+		}
+
+		@media (min-width: $large) {
+			font-size:4.2rem;
+		}
+
+		@media (min-width: $vlarge) {
+			font-size:5rem;
+		}
+
+		.i {
+			display:inline-block;
+			font-family:$Baskerville;
+			font-style:italic;
+			font-weight:300;
+			letter-spacing:-2px;
+			padding-top:5px;
+		}
+
+		.msk {
+			margin-top:-2px;
+			padding-top:0px;
+			padding-bottom:10px;
+
+		}
+
+	}
+
+	.animated h2 {
+		.msk span {
+			@include transform(translateY(150%));
+		}
+	}
+
+	.animated.visible {
+		.msk {
+			@for $i from 1 through 10 {
+				&:nth-child(#{$i}) {
+					span {
+						@include transform(translateY(0%));
+						@include transition(transform $transitionDuration $ease 0.05s * $i);
+					}
+				}
+			}
+		}
+	}
+
+	section.intro {
+
+		position:relative;
+
+		@media (min-width: $medium) {
+			height:100vh;
+		}
+
+		h1 {
+			@media (min-width: $mobile) and (max-width: $medium - 1px) {
+				top:64vh;
+			}
+			@media (min-width: $medium) {
+				margin-top:-30px;
+			}
+		}
+
+		.padding {
+
+			p {
+
+				color:white;
+
+				@media (max-width: $small - 1px) {
+					font-size:1.4rem;
+				}
+
+				@media (min-width: $small) and (max-width: $medium - 1px){
+					margin-top:0px;
+					font-size:2rem;
+				}
+
+				@media (min-width: $medium) {
+					margin-top:120px;
+					max-width:35%;
+				}
+
+				@media (min-width: $vlarge) {
+					margin-top:150px;
+				}
+
+			}
+
+		}
+
+		.page-visuel {
+
+			position:relative;
+			overflow:hidden;
+			z-index:10;
+			height:300px;
+
+			@media (min-width: $medium) {
+				position:absolute;
+				bottom:0; right:0;
+				height:50vh;
+				width:50%;
+				overflow:hidden;
+
+			}
+
+			&:after {
+				content:'';
+				display:block;
+				position:absolute;
+				top:0; left:0;
+				width:100%;
+				height:100%;
+				background:$colorCareers;
+			}
+
+			.image {
+				position:absolute;
+				top:0; right:0;
+				width:100%;
+				height:100%;
+				background-image:url('../assets/pages/career/wkn-recrutement-web-mobile.jpg');
+				background-size:cover;
+				background-position: center center;
+				background-repeat:no-repeat;
+
+				@media (min-width: $small) {
+					background-image:url('../assets/pages/career/wkn-recrutement-web.jpg');
+				}
+
+				@media (min-width: $vlarge) {
+					background-image:url('../assets/pages/career/wkn-recrutement-web-large.jpg');
+				}
+
+			}
+
+		}
+
+		&.animated {
+
+			p {
+				opacity:0;
+				@include transform(translateY(50px));
+			}
+
+			.page-visuel {
+				img {
+					@include transform(translateX(20%));
+				}
+			}
+		}
+
+		&.animated.visible {
+
+			p {
+				opacity:1;
+				@include transform(translateX(0px));
+				@include transition(transform 1200ms $ease 0ms, opacity 250ms linear 400ms);
+			}
+
+			.page-visuel {
+				&:after {
+					@include transform(translateX(-100%));
+					@include transition(transform $transitionDuration * 2 $ease 0ms);
+				}
+
+				.image {
+					@include transform(translateX(0%));
+					@include transition(transform $transitionDuration * 2 $ease 0ms);
+				}
+
+			}
+		}
+
+	}
+
+	section[class^='join-'] {
+
+		.padding {
+			@media (min-width: $large) {
+				padding-right:16%;
+			}
+			@media (min-width: $vlarge) {
+				padding-right:22%;
+			}
+		}
+
+		.block-content {
+
+			margin-bottom:40px;
+
+			@media (min-width: $small) {
+				margin-bottom:80px;
+			}
+
+			@media (min-width: $medium) {
+				margin-top:-40px;
+				margin-left:50%;
+			}
+
+			@media (min-width: $vlarge) {
+				margin-bottom:110px;
+			}
+
+		}
+
+		&.join-team {
+			background:$fontColor;
+			color:white;
+		}
+
+		&.animated {
+			.block-content p {
+				opacity:0;
+				@include transform(translateY(50px));
+			}
+
+			.list-title {
+				.txt {
+					@include transform(translateX(-100%));
+					&:after {
+						@include transform(translateX(-100%));
+					}
+				}
+			}
+
+			.list-item {
+
+				opacity:0;
+				@include transform(translateY(150px));
+
+				.icon.arrow {
+					opacity:0;
+					@include transform(translate(-150px, -50%));
+				}
+
+			}
+
+		}
+
+		&.animated.visible {
+			.block-content p {
+				opacity:1;
+				@include transform(translateX(0px));
+				@include transition(transform 1200ms $ease 0ms, opacity 250ms linear 400ms);
+			}
+
+			.list-title {
+				.txt {
+					@include transform(translateX(0%));
+					@include transition(transform 1200ms $ease 0ms);
+					&:after {
+						@include transform(translateX(0%));
+						@include transition(transform 1200ms $ease 150ms);
+					}
+				}
+			}
+
+			.list-item {
+
+				opacity:1;
+				@include transform(translateY(0px));
+
+
+				@for $i from 1 through 10 {
+			      	&:nth-child(#{$i}) {
+				      	@include transition(transform 1200ms $ease 0.05s * $i, opacity 0.250s linear 0.05s * $i + 0.80s);
+				      	.icon.arrow {
+					      	@include transition(transform 1200ms $ease 0.05s * $i + 0.2s, opacity 250ms linear 0.05s * $i + 1s, background $transitionDuration $ease3 0ms);
+				      	}
+					}
+			    }
+
+
+
+				.icon.arrow {
+					opacity:1;
+					@include transform(translate(0px, -50%));
+				}
+
+			}
+
+
+		}
+
+	}
+
+}

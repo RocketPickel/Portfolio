@@ -1,0 +1,481 @@
+header.header {
+
+	.navbar-brand {
+
+		display:inline-block;
+		position:absolute;
+		top:30px;
+		z-index:11;
+		padding:0px;
+		height:$borderSizeMedium;
+		line-height:$borderSizeMedium;
+		left:$borderSizeMedium;
+		margin:0px;
+		color:inherit;
+		white-space:nowrap;
+		@include transition(transform $transitionDuration $ease 0ms);
+
+		@media (min-width: $small) {
+			position:fixed;
+			top:0;
+			z-index:1000;
+		}
+
+		@media (min-width: $vlarge) {
+			height:$borderSizeLarge;
+			line-height:$borderSizeLarge;
+			left:$borderSizeLarge;
+		}
+
+		.menuOpen & {
+
+			@media (min-width: $small) {
+				@include transition-duration($transitionDuration);
+				@include transform(translate(calc(16vw - 40px), 100%));
+			}
+
+			@media (min-width: $large) {
+				@include transform(translate(calc(16vw - 60px), 100%));
+			}
+
+		}
+
+		svg {
+			display:inline-block;
+			vertical-align:middle;
+			path {
+				@include transition(fill 150ms linear 0ms);
+			}
+		}
+
+		.sub-page {
+			position:relative;
+			font-family:$Baskerville;
+			font-size:1.3rem;
+			font-style:italic;
+			display:inline-block;
+			vertical-align:top;
+			position:relative;
+			height:40px;
+			overflow:hidden;
+			@include transition(opacity 50ms linear 200ms);
+			> * {
+				display:block;
+				position:relative;
+				top:2px;
+			}
+		}
+
+		&.dark {
+			svg {
+				path {
+					fill:$fontColor!important;
+				}
+			}
+		}
+
+	}
+
+	.scrolldown, .scrolltop {
+
+		position:fixed;
+		z-index:9;
+		line-height:1;
+		@include transform(rotate(-90deg));
+		pointer-events:none;
+		bottom:25px;
+		left:-5px;
+		z-index:101!important;
+		@include transition(color 150ms linear 0ms, opacity 250ms linear 0ms);
+
+		@media (min-width: $small) {
+			left:$borderSizeMedium;
+			bottom:$borderSizeMedium - 2px;
+			z-index:200;
+		}
+
+		@media (min-width: $vlarge) {
+			bottom:$borderSizeLarge - 2px;
+			left:$borderSizeLarge;
+		}
+
+		> * {
+			display:inline-block;
+			vertical-align:middle;
+		}
+
+		> .txt {
+			font-weight:700;
+			font-size:0.8rem;
+			margin-left:10px;
+			span {
+				display:inline-block;
+				@include transition(transform 400ms $ease 0ms);
+				@include transform(translateX(5px));
+			}
+		}
+
+		&.dark {
+			color:$fontColor!important;
+			svg > * {
+				fill:$fontColor!important;
+				@include transition(fill 150ms linear 0ms);
+			}
+		}
+
+	}
+
+	.scrolldown {
+		@include transition(bottom 400ms $ease 0ms);
+		.arrow {
+			@include animation(bounce 800ms  $ease infinite alternate);
+		}
+
+	}
+
+	.scrolltop {
+
+		left:inherit;
+		@include transform(rotate(90deg));
+		pointer-events:all;
+		color:inherit;
+		text-decoration:none!important;
+		@include transition(bottom 400ms $ease 0ms);
+		right:5px;
+		bottom:-100px;
+
+		@media (min-width: $small) {
+			right:$borderSizeMedium;
+		}
+
+		@media (min-width: $vlarge) {
+			right:$borderSizeLarge;
+		}
+
+
+		&.visible {
+			opacity:1;
+			bottom:25px;
+			@include transition(bottom 400ms $ease 0ms);
+
+			@media (min-width: $small) {
+				bottom:$borderSizeMedium - 2px;
+			}
+
+			@media (min-width: $vlarge) {
+				bottom:$borderSizeLarge - 2px;
+			}
+
+		}
+
+		.menuOpen & {
+			opacity:0;
+			@include transition-delay(0ms);
+		}
+
+		> .txt {
+			margin-left:5px;
+		}
+
+	}
+
+}
+
+.list-socials {
+
+	padding:0px;
+	margin:0px;
+	list-style:none;
+
+	header.header & {
+
+		position:fixed;
+		z-index:1000;
+		top:50%;
+		right:$borderSizeMedium * 0.5;
+		z-index:500;
+		@include transform(translate(50%,-50%));
+		@include transition(transform $transitionDuration $ease 0ms);
+
+		@media (min-width: $vlarge) {
+			right:$borderSizeLarge * 0.5 ;
+		}
+
+		.menuOpen & {
+			@include transform(translate(-10px, -50%));
+		}
+	}
+
+	li {
+
+		#menu & {
+			display:inline-block;
+		}
+
+		a {
+			height:25px;
+			width:25px;
+			line-height:25px;
+			display:block;
+			text-align:center;
+			.icon {
+				display:inline-block;
+				vertical-align: middle;
+				svg {
+					path {
+						@include transition(fill 150ms linear 0ms);
+					}
+				}
+			}
+		}
+
+	}
+
+}
+
+.switch-lang {
+
+	list-style:none;
+	margin:0px;
+	padding:0px;
+
+	header.header & {
+
+		position:fixed;
+		z-index:1000;
+		top:$borderSizeMedium * 0.5;
+		right:$borderSizeMedium;
+		@include transform(translateY(-50%));
+		display:block;
+		@include transition(transform $transitionDuration $ease 0ms);
+
+		@media (min-width: $vlarge) {
+			top:$borderSizeLarge * 0.5;
+			right:$borderSizeLarge;
+		}
+
+		.menuOpen & {
+
+			@include transform(translate(-$borderSizeMedium, $borderSizeMedium));
+
+			@media (min-width: $vlarge) {
+				@include transform(translate(-$borderSizeLarge, $borderSizeLarge));
+			}
+
+		}
+
+	}
+
+	li {
+		display:inline-block;
+		vertical-align:middle;
+		margin-left:3px;
+		&.active a {
+			color:$fontColor;
+		}
+	}
+
+	a {
+		display:block;
+		font-size:1.2rem;
+		text-transform:uppercase;
+		color:#bcbcbc;
+		font-weight:900;
+		text-decoration:none;
+		letter-spacing:0.2em;
+		@media (min-width: $small) {
+			font-size:0.9rem;
+		}
+		@media (min-width: $vlarge) {
+			font-size:1rem;
+		}
+	}
+
+}
+
+.navbar-toggle {
+
+	position:fixed;
+	top:28px;
+	right:28px;
+	margin-left:-10px;
+	text-align:center;
+	font-size:0px;
+	z-index:100;
+	color:inherit!important;
+	height:45px;
+	width:45px;
+	cursor:pointer;
+	z-index:1000;
+	pointer-events:none;
+	@include transition(transform $transitionDuration $ease 0ms);
+	background:white;
+	@include border-top-radius(25px);
+	@include border-bottom-radius(25px);
+
+	@media (min-width: $small) {
+		top:50%;
+		left:$borderSizeMedium;
+		right:inherit;
+		margin-top:-20px;
+		height:40px;
+		width:40px;
+		background:transparent;
+		@include border-top-radius(0px);
+		@include border-bottom-radius(0px);
+	}
+
+	@media (min-width: $vlarge) {
+		left:$borderSizeLarge;
+	}
+
+	.menuOpen & {
+		@media (min-width: $small) {
+			@include transform(translateX(20px));
+		}
+		@media (min-width: $medium) {
+			@include transform(translateX(60px));
+		}
+	}
+
+	.loaded & {
+		pointer-events:all;
+	}
+
+	.icon{
+
+		position:absolute;
+		top:50%;
+		right:50%;
+		@include transform(translate(50%, -50%));
+		@include transition(transform $transitionDuration $ease 0ms);
+
+		@media (min-width: $small) {
+			right:0;
+			@include transform(translate(-20px, -50%));
+		}
+
+		.menuOpen & {
+			@media (max-width: $small - 1px ) {
+				@include transform(translate(50%, -1px));
+			}
+		}
+
+	}
+
+	&:hover {
+		@media (min-width: $small) {
+			.line {
+				&:nth-child(1) {
+					width:20px;
+				}
+
+				&:nth-child(2) {
+					width:32px;
+				}
+
+				&:nth-child(3) {
+					width:18px;
+				}
+			}
+			.txt {
+				@include transform(rotate(-90deg) translateY(-8px));
+
+				span:nth-child(1) {
+					@include transform(translateY(-5px));
+				}
+
+				span:nth-child(2) {
+					@include transform(translateY(5px));
+				}
+
+				span:nth-child(3) {
+					@include transform(translateY(-2px));
+				}
+				span:nth-child(4) {
+					@include transform(translateY(3px));
+				}
+			}
+		}
+	}
+
+	.line {
+
+		float:right;
+		clear:right;
+		height:2px;
+		background:$fontColor;
+		@include transition(transform 800ms $ease 0ms, background 150ms linear 0ms);
+
+		&:nth-child(1) {
+			width:16px;
+			.menuOpen & {
+				width:20px!important;
+				@include transform(rotate(45deg));
+			}
+		}
+
+		&:nth-child(2) {
+			width:20px;
+			.menuOpen & {
+				width:20px!important;
+				margin-top:-2px;
+				@include transform(rotate(-45deg));
+			}
+		}
+
+		&:nth-child(3) {
+			width:12px;
+			.menuOpen & {
+				width:0px;
+			}
+		}
+
+		&+.line {
+			margin-top:2px;
+			@media (min-width: $small) {
+				margin-top:3px;
+			}
+		}
+
+		@include transition(all 400ms $ease 0ms);
+
+	}
+
+	.txt {
+
+		position:absolute;
+		width:100%;
+		top:15px;
+		right:-25px;
+		text-align:center;
+		display:none;
+		font-size:0.7rem;
+		text-transform:uppercase;
+		font-family:$Montserrat;
+		font-weight:900;
+		letter-spacing:0.2em;
+		@include transform(rotate(-90deg));
+		@include transition(transform 400ms $ease 0ms, opacity 150ms linear 0ms, color 150ms linear 0ms);
+
+		@media (min-width: $small) {
+			display:block;
+		}
+
+		@media (min-width: $vlarge) {
+			font-size:1rem;
+			top:12px;
+		}
+
+		.menuOpen & {
+			opacity:0;
+		}
+
+		span {
+			display:inline-block;
+			@include transition(transform 400ms $ease 0ms);
+		}
+
+	}
+
+}

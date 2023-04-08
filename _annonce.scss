@@ -1,0 +1,273 @@
+.single-annonce {
+
+	&:after{
+		display:none;
+	}
+
+	.header {
+		position:relative;
+		background:white;
+		padding:0 40px;
+
+		@media (min-width: $vlarge) {
+			padding:0 80px;
+		}
+
+		.navbar-brand {
+			position:relative;
+			left:0px!important;
+			top:0px!important;
+			float:none;
+		}
+
+		.link {
+
+			float:right;
+			margin-top:10px;
+			margin-right:-20px;
+
+			@media (min-width: $small) {
+				margin-right:0px;
+			}
+
+			@media (min-width: $vlarge) {
+				margin-top:16px;
+			}&:before{background:$colorHome;
+			}
+		}
+
+	}
+
+	.footer {
+
+		position:relative;
+
+		.padding{
+
+			display:block;
+			padding-left:0px;
+
+			@media (min-width: $small) {
+				@include display(flex);
+				@include align-items(flex-start);
+			}
+
+			@media (min-width: $medium) {
+				padding:0px 10vh;
+			}
+
+			@media (min-width: $large) {
+				padding:10vh;
+			}
+
+			> *+* {
+				margin-top:20px;
+				@media (min-width: $small) {
+					margin-top:0px;
+				}
+			}
+
+		}
+
+		.contact {
+			@include transform(translateY(0)!important);
+		}
+
+		.credits {
+			text-align:left;
+		}
+
+		.list-socials{
+			li{
+				display:inline-block;
+			}
+		}
+	}
+
+}
+
+
+.annonce {
+
+	background:white;
+
+	.content {
+		.padding {
+
+			padding-top:80px;
+			padding-bottom:80px;
+
+			@media (min-width: $small) {
+				padding-top:15vh;
+				padding-bottom:15vh;
+				@include display(flex);
+				@include flex-direction(row);
+				@include flex-wrap(wrap);
+				@include align-content(flex-start);
+				@include justify-content(flex-start);
+				padding-right:16%;
+			}
+
+		}
+	}
+
+	.annonce-title {
+
+		min-width:100%;
+		margin-bottom:40px;
+
+		@media (min-width: $small) {
+			margin-bottom:60px;
+		}
+
+
+		.block-title {
+			margin-bottom:5px;
+			color:#babcc1;
+			.waves svg > * {stroke:#babcc1;}
+		}
+
+		h2 {
+
+			font-size:3.6rem;
+			line-height:1;
+			text-transform:none;
+			margin-bottom:0px;
+
+			@media (min-width: $large) {
+			}
+
+			@media (min-width: $vlarge) {
+				font-size:4.6rem;
+			}
+
+		}
+	}
+
+
+
+	.annonce-infos{
+		width:220px;
+	}
+
+	.annonce-description {
+
+		@media (min-width: $large) {
+
+			width:calc(100% - 220px);
+			padding-left:110px;
+		}
+		@media (min-width: $vlarge) {
+			padding-left:150px;
+		}
+
+		p {
+
+			font-size:1.3rem;
+			line-height:1.8;
+
+			@media (min-width: $vlarge) {
+				font-size:1.6rem;
+			}
+
+		}
+	}
+
+	.infos{
+
+		list-style:none;
+		margin:0px;
+		padding:0px;
+		margin-bottom:30px;
+
+		li {
+
+			display:block;
+			margin-bottom:5px;
+			@media (min-width: $small) {
+			margin-bottom:20px;
+			}
+
+			&+li {
+
+				margin-top:10px;
+
+				@media (min-width: $mobile) {
+					margin-top:20px;
+				}
+
+				@media (min-width: $small) {
+					margin-top:0px;
+				}
+
+				@media (min-width: $large) {
+					margin-top:20px;
+				}
+				@media (min-width: $vlarge) {
+					margin-top:30px;
+				}
+			}
+
+			.block-title {
+				display:block;
+				margin-bottom:0px;
+				@media (min-width: $vlarge) {
+					font-size:1.5rem;
+					margin-bottom:5px;
+				}
+
+				&+span {
+					font-weight:900;
+					font-size:1rem;
+					@media (min-width: $vlarge) {
+						font-size:1.3rem;
+					}
+				}
+			}
+		}
+	}
+
+	form.candidate{
+
+		background:#1c1b20;
+
+		h2 {
+			color:white;
+			font-size:2.4rem;
+			line-height:1.2;
+			text-align:center;
+			margin-bottom:40px;
+		}
+
+		p {
+			text-align:center;
+			a {
+				color:white;
+				font-weight:700;
+			}
+		}
+
+		fieldset p {
+			margin-bottom:60px;
+			@media (min-width: $small) {
+				margin-left:-70px;
+				margin-right:-70px;
+			}
+		}
+
+		.padding {
+			@media (min-width: $medium) {
+				padding-left:0px;
+				padding-right:0px;
+				max-width:440px;
+				margin:0 auto;
+			}
+		}
+
+		.form-actions {
+			text-align:center;
+		}
+
+	}
+
+}

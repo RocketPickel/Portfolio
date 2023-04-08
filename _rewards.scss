@@ -1,0 +1,73 @@
+.list-rewards {
+
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	margin-left:-5px;
+	white-space:nowrap;
+
+	@media (min-width: $small) {
+		margin-left:-15px;
+	}
+
+	.reward {
+		display:inline-block;
+		margin:0 5px;
+
+		@media (min-width: $small) {
+			margin:0 15px;
+		}
+
+		svg {
+			.leafs {
+				fill:white;
+				opacity:0.3;
+			}
+			.txt {
+				fill:white;
+			}
+		}
+
+		.awwwards {
+			svg {
+				width:80px;
+				height:60px;
+			}
+		}
+
+		.awwwards {
+			svg {
+				width:60px;
+				height:40px;
+				@media (min-width: $small) {
+					width:80px;
+					height:60px;
+				}
+			}
+		}
+
+		.cssda {
+			svg {
+				width:63px;
+				height:40px;
+				@media (min-width: $small) {
+					width:82px;
+					height:52px;
+				}
+			}
+		}
+
+		.awwwardsHM {
+			svg {
+				width:63px;
+				height:40px;
+				@media (min-width: $small) {
+					width:85px;
+					height:60px;
+				}
+			}
+		}
+
+	}
+}

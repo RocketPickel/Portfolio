@@ -1,0 +1,476 @@
+.page-rse {
+	
+	&.loading .page { @include transform(translateY(100vh)); }
+	.loader{
+
+		@include transform(translateY(-100vh));
+		@media (min-width: $small) {
+			@include transform(translateY(calc(-100vh - 40px)));
+		}
+		.color{background:$colorIdeas!important;}
+	}
+	
+	.loader{
+		.color{background:$colorRse!important;}
+	}
+
+	.menuColor {background:$colorRse;}
+	
+	.page-container > main > .intro {
+		.padding {
+			padding-bottom: 0!important;
+			height: 0!important;
+			padding-top: 50vh!important;
+		}
+		
+		h1 {
+			color: $colorRseBase;
+			top:100%!important;
+			transform: translateY(-50%)!important;
+			padding-bottom: 0!important;
+			white-space: nowrap;
+			
+			@media (max-width: $mobile) {
+				font-size: 20vw!important;
+			}
+			
+			.waves svg > * {
+				stroke: $colorRseBase;
+			}
+			
+			.dot {
+				color: $colorRseBase;
+			}
+		}
+		
+		.page-visuel {
+			overflow: hidden;
+			margin-top: 6.2rem!important;
+			background: darken($colorRseBase, 10%);
+			
+			@media (max-width: $mobile) {
+				margin-top: 10vw!important;
+			}
+			
+			.image {
+				position: relative;
+				min-height: 320px;
+				padding-top: percentage(500/1200);
+				
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+	
+	span.dot {
+		color: $colorRse;
+	}
+	
+	.page-content {
+		background: $colorRseBase;
+		
+		.padding {
+			@media (min-width: $small) {
+				padding:20vh!important;
+			}
+		}
+
+		.pourcent {
+			margin-bottom: 50px;
+			display: flex;
+			flex-direction: column;
+			gap: 45px;
+
+			@media (min-width: $medium) {
+				flex-direction: row;
+				align-items: center;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				max-width: 120px;
+				filter: brightness(0) invert(1);
+			}
+
+			h2 {
+				text-transform: none;
+				font-weight: 600;
+				line-height: 1.1;
+				min-width: 50%;
+				color: white;
+				font-size: 4.2rem;
+
+				a {
+					color: #b2804f;
+					text-decoration: none;
+				}
+
+				i {
+					font-family: "Libre Baskerville", serif;
+					font-weight: 300;
+				}
+			}
+		}
+		
+		p {
+			color: #FFF;
+			
+			&.intro {
+				font-size: 7rem;
+				line-height: 1.1;
+				margin-bottom: 80px;
+				
+				@media (max-width: $medium) {
+					font-size: 7vw;
+				}
+				
+				div {
+					overflow: hidden;
+					
+					span {
+						display: block;
+					}
+				}
+			}
+		}
+		
+		.text {
+			@media (min-width: $small) {
+				columns: 2;
+				column-gap: 60px;
+			}
+			
+			@media (min-width: $medium) {
+				max-width: 740px;
+			}
+		}
+	}
+	
+	.Axes {
+		> .headline {
+			
+			.padding {
+				@media (min-width: $small) {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+				}
+			}
+			
+			h2 {
+				text-transform: none;
+				font-weight: 600;
+				line-height: 1.1;
+				color: $colorRseBase;
+				min-width: 50%;
+				
+				@media (min-width: $small) {
+					font-size: 4.2rem;
+				}
+				
+				i {
+					font-family: $Baskerville;
+					font-style: italic;
+					font-weight: 300;
+				}
+			}
+		}
+	}
+	
+	.Axes__item {
+		border-top: 1px solid #c5c5c5;
+		
+		&.animated:not(.visible) {
+			.count { transform: translateY(-200%);}
+			h3 { transform: translateY(200%);}
+			.plus { transform: translateY(200%);}
+		}
+		
+		&[data-collapse] {
+			.plus {
+				svg {
+					transform: rotate(0deg);
+					line+line {
+						opacity: 1;
+					}
+				}
+			}
+			
+			.content {
+				height: 0;
+				
+				.texts {
+					opacity: 0;
+					transform: translateY(40px);
+				}
+			}
+		}
+		
+		.padding {
+			padding: 30px 40px!important;
+			
+			@media (min-width: $small) {
+				padding: 30px 20vh!important;
+			}
+		}
+		
+		> .headline {
+			cursor: pointer;
+			overflow: hidden;
+			
+			&:hover {
+				.plus svg {
+					transform: rotate(180deg);
+				}
+			}
+		}
+		
+		.wrapper {
+			position: relative;
+			padding-right: 100px;
+		}
+		
+		.count {
+			display: block;
+			font-size: 1.8rem;
+			font-weight: 500;
+			transition: transform 1200ms $ease2;
+		}
+		
+		h3 {
+			margin-top: 80px;
+			font-weight: 400;
+			font-size: 3.2rem;
+			margin-bottom: 0;
+			transition: transform 1200ms $ease2;
+			
+			@media (min-width: $small) {
+				margin-top: 140px;
+				font-size: 4.6rem;
+			}
+		}
+		
+		.plus {
+			position: absolute;
+			bottom: -5px;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 60px;
+			height: 60px;
+			transform: rotate(180deg);
+			transition: transform 1200ms $ease;
+			
+			&:before {
+				display: block;
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				border: 1.3px solid $colorRseBase;
+			}
+			
+			svg {
+				width: 18px;
+				height: 18px;
+				transition: transform 480ms $ease;
+				
+				line {
+					stroke: $colorRseBase;
+					stroke-width: 1.2px;
+					transition: opacity 240ms $ease;
+					
+					&+line {
+						opacity: 0;
+					}
+				}
+			}
+		}
+		
+		.content {
+			overflow: hidden;
+			
+			.padding {
+				padding: 30px!important;
+				padding-bottom: 60px!important;
+				
+				@media (min-width: $small) {
+					padding: 30px 20vh!important;
+					padding-bottom: 60px!important;
+				}
+			}
+			
+			.texts {
+				transition: transform 640ms $ease2, opacity 640ms $ease2;
+			
+				@media (min-width: $small) {
+					columns: 2;
+					column-gap: 60px;
+				}
+				
+				@media (min-width: $medium) {
+					max-width: 740px;
+				}
+			}
+		}
+	}
+	
+	.Team {
+		position: relative;
+		overflow: hidden;
+		background: $colorRseBase;
+		
+		.padding {
+			padding: 120px 40px!important;
+			
+			@media (min-width: $small) {
+				padding: 240px 20vh!important;
+			}
+		}
+		
+		p {
+			color: #FFF;
+			font-size: 4.6vw;
+			line-height: 1.1;
+			font-weight: 700;
+			max-width: 66%;
+			
+			@media (max-width: $small) {
+				font-size: 9vw;
+				max-width: 100%;
+			}
+			
+			strong {
+				color: $colorRse;
+			}
+			
+			div {
+				overflow: hidden;
+				
+				span {
+					display: block;
+				}
+			}
+		}
+		
+		.Team__portraits {
+			position: absolute;
+			top: 0;
+			left: 0;
+			left: 50%;
+			width: 50%;
+			height: 100%;
+			pointer-events: none;
+			
+			@media (max-width: $small) {
+				width: 100%;
+				left: 0;
+			}
+			
+			> div {
+				position: absolute;
+				width: 80px;
+				
+				@media (max-width: $small) {
+					width: 60px;
+				}
+				
+				img {
+					display: block;
+					width: 100%;
+					height: auto;
+					border-radius: 50%;
+				}
+			}
+			
+			.check {
+				background: $colorRse;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 40px;
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				bottom: -5px;
+				right: -5px;
+				z-index: 10;
+				
+				@media (max-width: $small) {
+					width: 20px;
+					height: 20px;
+				}
+				
+				img {
+					width: 40%;
+					height: auto;
+				}
+			}
+		}
+	}
+	
+	.Download {
+		background: $colorRse;
+		text-align: center;
+		color: $colorRsebeige;
+		
+		.padding {
+			padding: 120px 40px!important;
+			
+			@media (min-width: $small) {
+				padding: 180px 20vh!important;
+			}
+		}
+		
+		p {
+			font-family: $Gilroy;
+			color: $colorRsebeige;
+			font-size: 3.6rem;
+			font-weight: 700;
+			
+			@media (max-width: $small) {
+				font-size: 2rem;
+			}
+		}
+		
+		.link {
+			font-size: 3.4rem;
+			line-height: 1.2;
+			margin-top: 0;
+			
+			@media (max-width: $small) {
+				font-size: 2.6rem;
+			}
+			
+			&:after, &:before {
+				background: $colorRsebeige;
+			}
+		}
+	}
+	
+	.Gallery {
+		display: flex;
+		align-items: stretch;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		background: $colorRseBase;
+		overflow-y: auto;
+		
+		> * {
+			width: 20%;
+			min-width: 200px;
+		}
+	}
+}

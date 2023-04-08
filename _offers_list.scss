@@ -1,0 +1,242 @@
+.list-title {
+	
+	display:inline-block;
+	margin-bottom:4px;
+	overflow:hidden;
+	
+	position:relative;
+	
+	@media (min-width: $small) {
+		margin-bottom:40px;
+	}
+	
+	@media (min-width: $vlarge) {
+		font-size:1.1rem;
+		margin-bottom:60px;
+	}
+	
+	.txt {
+		display:inline-block;
+		font-size:0.8rem;
+		color:#b0b0b0;
+		font-weight:700;
+		letter-spacing:0.1em;
+		text-transform:uppercase;
+		
+		.join-team & {
+			color:#5a585e;
+		}
+		
+		&:after{
+		
+			content:'';
+			display:block;
+			width:100%;
+			height:1px;
+			background:#b0b0b0;
+			position:absolute;
+			top:100%;
+			left:0;
+			
+			.join-team & {
+				background:#5a585e;
+			}
+			
+		}
+		
+	}
+	
+	
+}
+
+.offers-list {
+	
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	
+	.list-item {
+		
+		position:relative;
+		
+		&:before {
+			
+			content:'';
+			display:block;
+			width:4px;
+			height:4px;
+			@include border-top-radius(4px);
+			@include border-bottom-radius(4px);
+			overflow:hidden;
+			background:$fontColor;
+			position:absolute;
+			top:50%;
+			left:0;
+			margin-top:-2px;
+			
+			.join-team & {
+				background:white;
+			}
+			
+		}
+		
+		&+.list-item{
+			border-top:1px solid #ececec;
+			.join-team & {
+				border-color:#363539;
+			}
+		}
+		
+	}
+	
+	.offer.offer-link {
+		
+		display:block;
+		text-decoration:none!important;
+		position:relative;
+		padding:20px;
+		color:$fontColor;
+		padding-right:50px;
+		cursor:pointer;
+		
+		&.disabled {
+			pointer-events:none;
+		}
+		
+		@media (min-width: $vlarge) {
+			padding:30px 20px;
+			padding-right:60px;
+		}
+		
+		.join-team & {
+			color:white;
+		}
+		
+		> * {
+			display:inline-block;
+			vertical-align:middle;
+			font-size:1.2rem;
+			margin:0px;
+			
+			@media (min-width: $large) {
+				font-size:1.4rem;
+			}
+			
+			@media (min-width: $vlarge) {
+				font-size:1.6rem;
+			}
+			
+		}
+		
+		.offer-job {
+			font-weight:900;
+			@media (max-width: $medium - 1px) {
+				display:block;
+			}
+			&:after {
+				content:'.';
+			}
+		}
+		
+		.offer-what, .offer-when {
+			font-family:$Baskerville;
+			font-style:italic;
+			text-transform:none;
+			letter-spacing:0px;
+			font-weight:300;
+		}
+		
+		.offer-what {
+			&:after {
+				content:'.';
+			}
+		}
+		
+		.offer-when {
+			&:before {
+				content:'';
+			}
+		}
+		
+		.arrow {
+			
+			position:absolute;
+			top:50%;
+			right:0px;
+			@include transform(translateY(-50%));
+			width:30px;
+			height:30px;
+			@include border-top-radius(40px);
+			@include border-bottom-radius(40px);
+			border:1px solid $fontColor;
+			background:transparent;
+			overflow:hidden;
+			@include transition(background $transitionDuration $ease 0ms);
+			
+			@media (min-width: $vlarge) {
+				width:40px;
+				height:40px;
+			}
+			
+			.join-team & {
+				border-color:white;
+			}
+			
+			svg {
+				
+				position:absolute;
+				top:50%;
+				left:50%;
+				@include transform(translate(-50%, -50%));
+				width:15px;
+				height:7px;
+				@include transition(transform $transitionDuration $ease 0ms);
+				
+				@media (min-width: $vlarge) {
+					width:18px;
+					height:10px;
+				}
+				
+				path {
+					
+					fill:$fontColor;
+					.join-team & {
+						fill:white;
+					}
+					
+				}
+				
+				&.arrow_hover {
+					
+					@include transform(translate(-30px, -50%));
+					
+					path {
+						fill:white;
+						.join-team & {
+							fill:$fontColor;
+						}
+					}
+					
+				}
+			}
+		}
+		
+		&:hover {
+			.arrow {
+				background:$fontColor;
+				svg {
+					@include transform(translate(100%, -50%));
+					&.arrow_hover {
+						@include transform(translate(-50%, -50%));
+					}
+				}
+				
+				.join-team & {
+					background:white;
+				}
+				
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,280 @@
+.Newsletter {
+
+  &__modal__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: 0;
+    border: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    outline: none!important;
+
+    &:hover {
+      svg {
+        transform: scale(0.6) rotate(0deg);
+      }
+    }
+
+    svg {
+      transform: scale(0.6) rotate(90deg);
+      transition: transform 400ms $ease2;
+
+      > * {
+        fill: white;
+      }
+    }
+  }
+
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483645;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    overflow: auto;
+    visibility: hidden;
+
+    @media screen and (min-height : 600px) {
+      align-items: flex-end;
+    }
+
+    &.is--visible {
+      visibility: visible;
+      pointer-events: all;
+
+      &:before {
+        opacity: 0.98;
+      }
+
+      .Newsletter__form {
+        transform: translateY(0%);
+        opacity: 1;
+        transition: all 600ms $ease2;
+      }
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      opacity: 0;
+      transition: opacity 200ms $ease2;
+    }
+  }
+
+  &__form {
+    position: relative;
+    color: white;
+    width: 100%;
+    transform: translateY(40%);
+    opacity: 0;
+
+    .scrollpane {
+      max-height: 100vh;
+      overflow: auto;
+      padding: 5vw 8vw;
+    }
+
+    .form__group {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    label:not(.checkbox) {
+      font-family: $Gilroy;
+      font-size: 4.4rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      line-height: 0.9;
+      display: block;
+      margin-bottom: 20px;
+
+      @media (min-width: $small) {
+        font-size: 7rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    input[type="email"] {
+      background: 0;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      outline: 0;
+      font-size: 2.4rem;
+      padding: 0;
+      box-shadow: none;
+      width: 100%;
+      padding: 0;
+      font-family: $Baskerville;
+      transition: border 120ms linear;
+      color: white;
+
+      @media (min-width: $small) {
+        font-size: 4rem;
+      }
+
+      &:focus {
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
+      }
+    }
+
+    .error {
+      position: absolute;
+      display: block;
+      margin-top: 5px;
+      color: $colorHome;
+    }
+
+    .checkbox {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      cursor: pointer;
+
+      &:hover {
+        .checkbox__custom {
+          border-width: 2px;
+        }
+      }
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+
+        &:checked + .checkbox__custom {
+          background: $colorHome;
+          border-color: $colorHome;
+          opacity: 1;
+
+          svg {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+          }
+        }
+      }
+
+      .checkbox__custom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 26px;
+        width: 26px;
+        height: 26px;
+        border-radius: 30px;
+        border: 1px solid white;
+        margin-right: 20px;
+        opacity: 0.2;
+        transition: border-width 200ms $ease2;
+
+        svg {
+          width: 12px;
+          height: 12px;
+          opacity: 0;
+          transform: scale(0) rotate(45deg);
+          transition: all 200ms $ease2;
+
+          > * {
+            fill: white;
+          }
+        }
+      }
+
+      .checkbox__label {
+        font-size: 1.1rem;
+        margin-top: 2px;
+
+        @media (min-width: $small) {
+          font-size: 1.3rem;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .RGPD__infos {
+      p {
+        color: $fontColorLight;
+        line-height: 1.2;
+        font-size: 1.3rem;
+
+        strong {
+          color: $white;
+        }
+
+        a {
+          color: $white;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .Form__output p {
+      color: $white;
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-top: 40px!important;
+
+      &:empty {
+        margin-top: 0!important;
+      }
+    }
+
+    .Btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: 0;
+      padding: 0;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+
+      &:hover {
+        svg {
+          transform: rotate(0deg) scale(1.6);
+
+          > * {
+            fill: $colorHome;
+          }
+        }
+      }
+
+      svg {
+        transform: rotate(42deg) scale(1.5);
+        transition: transform 240ms $ease2;
+
+        > * {
+          fill: white;
+          transition: fill 240ms $ease2;
+        }
+      }
+    }
+  }
+}
